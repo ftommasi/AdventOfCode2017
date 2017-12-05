@@ -1,8 +1,38 @@
-import math
-number_to_test= input()
+target = input()
+topLeft = 4
+topRight = 2
+botLeft = 1
+botRight = 1
+lastAdded = topLeft
+i = 4
+while True:
+  #shiftLeft
+  topRight = topLeft
+  botRight = botLeft
+  #addNumber
+  topLeft = topRight + botRight
+  lastAdded = topLeft
+  if lastAdded > target:
+    break
+  #addNumber
+  botLeft = topRight + topLeft + botRight
+  lastAdded = botLeft
+  if lastAdded > target:
+    break
+  #shift Down
+  topLeft = botLeft
+  topRight = botRight
 
-first_try = int(math.sqrt(number_to_test))+1
-if first_try % 2 == 0:
-  print (first_try + 1) * (first_try + 1)
-else:
-  print first_try * first_try
+  #add Number
+  botLeft = topRight + topLeft
+  lastAdded = botLeft
+  if lastAdded > target:
+    break
+  #add Number
+  botRight = topRight + topLeft + botLeft
+  lastAdded = botLeft
+  if lastAdded > target:
+    break
+  
+
+print lastAdded
