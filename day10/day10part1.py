@@ -22,19 +22,20 @@ knot = [i for i in xrange(knotSize)]
 startIndex = 0
 skipSize = 0
 for number in inputList:
-  endIndex = (startIndex + number) % len(knot)
-  temp = getSublistFromCircular(knot,startIndex,endIndex)
-  reverse = temp[::-1]
-  knot = replaceSublist(knot,reverse,startIndex)
-  startIndex = (startIndex + number + skipSize - 1) % len(knot)
+  if number > 0:
+    endIndex = (startIndex + number) % len(knot)
+    temp = getSublistFromCircular(knot,startIndex,endIndex)
+    reverse = temp[::-1]
+    knot = replaceSublist(knot,reverse,startIndex)
+    startIndex = (startIndex + number + skipSize ) % len(knot)
+    '''
+    print""
+    print"----------------"
+    print knot
+    print"----------------"
+    print ""
+    '''
   skipSize += 1
-  '''
-  print""
-  print"----------------"
-  print knot
-  print"----------------"
-  print ""
-  '''
 
 print knot
 print knot[0] * knot[1]
